@@ -1,0 +1,35 @@
+:host {
+  display: block;
+  padding-top: 10px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 12px 20px;
+  cursor: pointer;
+  border-radius: 0 25px 25px 0;
+  transition: 0.2s;
+  color: #202124;
+}
+
+.item:hover {
+  background-color: #f1f3f4;
+}
+
+.item.active {
+  background-color: #feefc3;
+}
+
+.material-icons {
+  font-size: 22px;
+}
+
+:host(.collapsed) .item {
+  justify-content: center;
+}
+
+:host(.collapsed) .text {
+  display: none;
+}

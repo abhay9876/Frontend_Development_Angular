@@ -1,0 +1,10 @@
+<div [ngClass]="viewMode === 'grid' ? 'grid' : 'list'">
+
+  <app-note-card
+    *ngFor="let note of notes"
+    [note]="note"
+    [viewType]="viewType"
+    (refresh)="refresh.emit()">
+  </app-note-card>
+
+</div>

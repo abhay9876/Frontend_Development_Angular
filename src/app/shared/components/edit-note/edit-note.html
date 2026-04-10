@@ -1,0 +1,43 @@
+<div class="modal-overlay" (click)="close()">
+  <div class="modal-container" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <input type="text" [(ngModel)]="title" placeholder="Title" class="title-input" />
+    </div>
+
+    <div class="modal-body">
+      <textarea
+        [(ngModel)]="description"
+        placeholder="Take a note..."
+        rows="5"
+        class="desc-input"
+      ></textarea>
+    </div>
+
+    <div class="reminder-badge" *ngIf="reminder !== null">
+      <span class="material-icons">schedule</span>
+      <span>{{ reminder | date: 'short' }}</span>
+      <span class="material-icons close-badge" (click)="removeReminder()">close</span>
+    </div>
+
+    <div class="modal-actions">
+      <div class="left-icons">
+        <div class="icon-wrapper">
+          <span class="material-icons">palette</span>
+          <input type="color" (change)="onColorChange($event)" />
+        </div>
+
+        <div class="icon-wrapper">
+          <span class="material-icons">notifications_none</span>
+          <input type="datetime-local" (change)="onReminderChange($event)" />
+        </div>
+
+        <div class="icon-wrapper">
+          <span class="material-icons">image</span>
+          <input type="file" accept="image/*" (change)="onImageUpload($event)" />
+        </div>
+      </div>
+
+      <button class="close-btn" (click)="close()">Close</button>
+    </div>
+  </div>
+</div>

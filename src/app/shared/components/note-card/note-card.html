@@ -1,0 +1,57 @@
+<div class="card" [style.backgroundColor]="note.color || '#fff'">
+  <div class="card-content" (click)="openEditModal()">
+    <h3>{{ note.title }}</h3>
+    <p>{{ note.description }}</p>
+    <div class="reminder-badge" *ngIf="note.reminder">
+      <span class="material-icons">schedule</span>
+      <span>{{ note.reminder | date: 'short' }}</span>
+      <span class="material-icons close-badge" (click)="removeReminder($event)">close</span>
+    </div>
+  </div>
+
+  <div class="actions">
+    <div class="icons">
+      <span class="material-icons" (click)="openColorPicker($event)">palette</span>
+      <input #colorPicker type="color" (change)="onColorChange($event)" class="hidden-input" />
+      <span class="material-icons" (click)="openReminderPicker($event)">notifications_none</span>
+      <input
+        #reminderPicker
+        type="datetime-local"
+        (change)="onReminderChange($event)"
+        class="hidden-input"
+      />
+
+      <span class="material-icons" (click)="openImageUpload($event)">image</span>
+      <input
+        #imageUpload
+        type="file"
+        accept="image/*"
+        (change)="onImageUpload($event)"
+        style="display: none"
+      />
+
+      <ng-container *ngIf="viewType === 'notes'">
+        <span class="material-icons" (click)="onTogglePin($event)" [class.pinned]="note.isPinned">
+          push_pin</span
+        >
+        <span class="material-icons" (click)="onArchive($event)">archive</span>
+        <span class="material-icons" (click)="onTrash($event)">delete</span>
+      </ng-container>
+      <ng-container *ngIf="viewType === 'archive'">
+        <span class="material-icons" (click)="onUnarchive($event)">unarchive</span>
+        <span class="material-icons" (click)="onTrash($event)">delete</span>
+      </ng-container>
+      <ng-container *ngIf="viewType === 'trash'">
+        <span class="material-icons" (click)="onRestore($event)">restore</span>
+        <span class="material-icons" (click)="onDeletePermanently($event)">delete_forever</span>
+      </ng-container>
+    </div>
+  </div>
+</div>
+
+<app-edit-note
+  *ngIf="showEditModal"
+  [note]="note"
+  (closeModal)="onModalClose()"
+  (refresh)="refresh.emit()"
+></app-edit-note>

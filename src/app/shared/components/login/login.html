@@ -1,0 +1,42 @@
+<div class="container">
+
+  <div class="card">
+
+    <div class="content">
+
+     
+      <h4 class="logo">
+        <span class="g">F</span><span class="o1">u</span><span class="o2">n</span>
+        <span class="g2">d</span><span class="l">o</span><span class="e">o</span>
+      </h4>
+
+    
+      <h2 class="title">Sign in</h2>
+      <p class="subtitle">with your Fundoo Account</p>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+        <div class="input-box">
+          <input type="text" required formControlName="email">
+          <label>Email or phone</label>
+        </div>
+
+        <div class="pass-box">
+          <input type="password" required formControlName = "password">
+          <label>password</label>
+        </div>
+
+        <a routerLink="/forget-password" class="link">Forgot Password?</a>
+
+        <div class="actions">
+          <a routerLink="/register" class="link">Create account</a>
+          <button class="btn" type="submit" >Next</button>
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</div>

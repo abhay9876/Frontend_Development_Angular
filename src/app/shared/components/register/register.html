@@ -1,0 +1,96 @@
+<div class="container">
+  <div class="card">
+    <div class="left">
+      <h4 class="logo">
+        <span class="g">F</span><span class="o1">u</span><span class="o2">n</span>
+        <span class="g2">d</span><span class="l">o</span><span class="e">o</span>
+      </h4>
+
+      <h2 class="title">Create your Fundoo Account</h2>
+
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="input-box">
+            <input type="text" formControlName="firstName" required />
+            <label>First name</label>
+
+            <small
+              *ngIf="
+                registerForm.get('firstName')?.touched && registerForm.get('firstName')?.invalid
+              "
+            >
+              First name is required
+            </small>
+          </div>
+
+          <div class="input-box">
+            <input type="text" formControlName="lastName" required />
+            <label>Last name</label>
+
+            <small
+              *ngIf="registerForm.get('lastName')?.touched && registerForm.get('lastName')?.invalid"
+            >
+              Last name is required
+            </small>
+          </div>
+        </div>
+
+        <div class="input-box">
+          <input type="email" formControlName="email" required />
+          <label>Email</label>
+          <span class="suffix">@gmail.com</span>
+
+          <small *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid">
+            Enter valid email
+          </small>
+        </div>
+
+        <p class="info">You can use letters, numbers</p>
+        <a class="blue-link">Use my current email address instead</a>
+
+        <div class="row">
+          <div class="input-box">
+            <input type="password" formControlName="password" required />
+            <label>Password</label>
+
+            <small
+              *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid"
+            >
+              Min 8 characters required
+            </small>
+          </div>
+
+          <div class="input-box">
+            <input type="password" formControlName="confirmPassword" required />
+            <label>Confirm</label>
+
+            <small
+              *ngIf="
+                registerForm.errors?.['passwordMismatch'] &&
+                registerForm.get('confirmPassword')?.touched
+              "
+            >
+              Passwords do not match
+            </small>
+          </div>
+        </div>
+
+        <p class="info">Use 6 or more characters with a mix of letters, numbers & symbols</p>
+
+        <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+        <div class="actions">
+          <a routerLink="" class="blue-link">Sign in instead</a>
+          <button class="btn" type="submit" [disabled]="isLoading || registerForm.invalid">
+            {{ isLoading ? 'Creating...' : 'Next' }}
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div class="right">
+      <img src="pic.svg" />
+      <p>One account. All of Google working for you.</p>
+    </div>
+  </div>
+</div>

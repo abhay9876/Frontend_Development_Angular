@@ -1,0 +1,45 @@
+<div class="note-container" (click)="expandNote()" [class.expanded]="expanded">
+  <div *ngIf="!expanded" class="collapsed-input">
+    <span class="material-icons">note_add</span>
+    <span>Take a note...</span>
+  </div>
+
+  <div *ngIf="expanded" class="expanded-form">
+    <input
+      type="text"
+      [(ngModel)]="title"
+      placeholder="Title"
+      class="title-input"
+      (click)="$event.stopPropagation()"
+    />
+    <textarea
+      [(ngModel)]="description"
+      placeholder="Take a note..."
+      rows="3"
+      class="desc-input"
+      (click)="$event.stopPropagation()"
+    ></textarea>
+
+    <div class="actions">
+      <div class="icons">
+        <input
+          type="color"
+          [(ngModel)]="color"
+          class="color-picker"
+          title="Choose color"
+          (click)="$event.stopPropagation()"
+        />
+        <input
+          type="datetime-local"
+          [(ngModel)]="reminder"
+          class="reminder-picker"
+          title="Set reminder"
+          (click)="$event.stopPropagation()"
+        />
+        <span class="material-icons">check_box</span>
+        <span class="material-icons">image</span>
+      </div>
+      <button (click)="closeNote($event)">Save</button>
+    </div>
+  </div>
+</div>

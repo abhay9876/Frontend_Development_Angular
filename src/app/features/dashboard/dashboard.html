@@ -1,0 +1,28 @@
+<app-header
+  (search)="onSearch($event)"
+  (refresh)="loadNotes()"
+  (toggleSidebar)="toggleSidebar()"
+  (toggleView)="onToggleView($event)"
+></app-header>
+
+<div class="layout">
+  <div class="overlay" *ngIf="sidebarOpen" (click)="toggleSidebar()"></div>
+
+  <app-sidebar
+    class="sidebar"
+    [class.open]="sidebarOpen"
+    [class.collapsed]="sidebarCollapsed"
+    (viewChanged)="onViewChange($event)"
+  ></app-sidebar>
+
+  <div class="content">
+    <app-create-note *ngIf="currentView === 'notes'" (noteCreated)="loadNotes()"> </app-create-note>
+
+    <app-note-list
+      [notes]="notes"
+      [viewType]="currentView"
+      [viewMode]="viewMode"
+      (refresh)="loadNotes()"
+    ></app-note-list>
+  </div>
+</div>

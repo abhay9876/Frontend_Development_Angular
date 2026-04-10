@@ -1,0 +1,21 @@
+<div>
+  <div class="item" [class.active]="activeView === 'notes'" (click)="setView('notes')">
+    <span class="material-icons">lightbulb</span>
+    <span class="text">Notes</span>
+  </div>
+
+  <div class="item" [class.active]="activeView === 'reminders'" (click)="setView('reminders')">
+    <span class="material-icons">notifications</span>
+    <span class="text">Reminders</span>
+  </div>
+
+  <div class="item" [class.active]="activeView === 'archive'" (click)="setView('archive')">
+    <span class="material-icons">archive</span>
+    <span class="text">Archive</span>
+  </div>
+
+  <div class="item" [class.active]="activeView === 'trash'" (click)="setView('trash')">
+    <span class="material-icons">delete</span>
+    <span class="text">Trash</span>
+  </div>
+</div>
