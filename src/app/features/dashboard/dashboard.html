@@ -1,0 +1,18 @@
+<app-navbar></app-navbar>
+
+<h2>
+  Task Dashboard
+  <span *ngIf="isAdmin" class="admin-badge">Admin Panel</span>
+</h2>
+
+<app-create-task *ngIf="!isAdmin" (refresh)="loadTasks()"></app-create-task>
+
+<div class="task-list">
+  <app-task-card
+    *ngFor="let task of tasks"
+    [task]="task"
+    [isAdmin]="isAdmin"
+    (refresh)="loadTasks()"
+  >
+  </app-task-card>
+</div>

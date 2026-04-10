@@ -1,0 +1,32 @@
+<div class="login">
+  <h1>Create an Account</h1>
+
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <!-- (ngSubmit)="onSubmit()" -->
+    <div class="input-box">
+      <input type="text" formControlName="userName" required />
+      <label>Username</label>
+    </div>
+
+    <div class="input-box">
+      <input type="password" formControlName="password" required />
+      <label>Password</label>
+    </div>
+
+    <div class="role-container">
+      <span>Choose Role :</span>
+      <div class="role-btn" (click)="toggleDropdown()">
+        {{ selectedRole || 'Select Role' }}
+      </div>
+
+      <div class="role-dropdown" *ngIf="isOpen">
+        <div class="role-item" (click)="selectRole('admin')">Admin</div>
+        <div class="role-item" (click)="selectRole('user')">User</div>
+      </div>
+    </div>
+    <div class="actions">
+      <a routerLink="" class="link">Sign In</a>
+      <button class="btn" type="submit">Next</button>
+    </div>
+  </form>
+</div>

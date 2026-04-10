@@ -1,0 +1,77 @@
+.login {
+  width: 300px;
+  margin: 50px auto;
+  font-family: Arial;
+}
+
+h1 {
+  text-align: center;
+}
+
+.input-box {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-box input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.input-box label {
+  position: absolute;
+  top: -10px;
+  left: 8px;
+  background: white;
+  font-size: 12px;
+  padding: 0 4px;
+}
+
+.role-container {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.role-btn {
+  padding: 10px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.role-dropdown {
+  position: absolute;
+  width: 100%;
+  border: 1px solid #ccc;
+  background: white;
+}
+
+.role-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.role-item:hover {
+  background: #007bff;
+  color: white;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn {
+  padding: 8px 15px;
+  border: none;
+  background: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+.link {
+  text-decoration: none;
+  font-size: 14px;
+}

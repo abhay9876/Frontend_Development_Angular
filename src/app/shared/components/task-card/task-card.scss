@@ -1,0 +1,72 @@
+.task-card {
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 10px;
+  margin: 12px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: 0.2s;
+}
+
+.task-card:hover {
+  transform: translateY(-2px);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status {
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: #eee;
+}
+
+.status.completed {
+  background: #4caf50;
+  color: white;
+}
+
+/* 🔥 ADMIN INFO */
+.admin-info {
+  font-size: 13px;
+  color: #666;
+  margin: 8px 0;
+  line-height: 1.4;
+}
+
+.edit-box input,
+.edit-box textarea {
+  width: 100%;
+  margin-top: 8px;
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #4cafef;
+  color: white;
+  transition: 0.2s;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+button.delete {
+  background: #f44336;
+}

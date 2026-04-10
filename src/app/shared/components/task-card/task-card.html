@@ -1,0 +1,34 @@
+<div class="task-card">
+  <div class="header">
+    <h3>{{ task.title }}</h3>
+
+    <span class="status" [class.completed]="task.isCompleted">
+      {{ task.isCompleted ? 'Completed' : 'Pending' }}
+    </span>
+  </div>
+  <div *ngIf="isAdmin" class="admin-info">
+    <p><strong>User:</strong> {{ task.userId }}</p>
+    <p><strong>Created:</strong> {{ task.createdAt | date: 'short' }}</p>
+  </div>
+
+  <p *ngIf="!isEditing">{{ task.description }}</p>
+
+  <div *ngIf="isEditing" class="edit-box">
+    <input [(ngModel)]="task.title" placeholder="Edit title" />
+    <textarea [(ngModel)]="task.description" placeholder="Edit description"></textarea>
+  </div>
+
+  <div class="actions">
+    <button (click)="toggleComplete()">
+      {{ task.isCompleted ? 'Pending' : 'Complete' }}
+    </button>
+
+    <button (click)="isEditing = !isEditing">
+      {{ isEditing ? 'Cancel' : 'Edit' }}
+    </button>
+
+    <button *ngIf="isEditing" (click)="updateTask()">Save</button>
+
+    <button class="delete" (click)="deleteTask()">Delete</button>
+  </div>
+</div>
